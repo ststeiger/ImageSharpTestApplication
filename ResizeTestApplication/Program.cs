@@ -38,11 +38,11 @@ namespace ResizeTestApplication
                                     // ,Sampler = new ImageSharp.Processing.NearestNeighborResampler()
                                     
                                     // Slowest, but best quality 
-                                    // ,Sampler = new ImageSharp.Processing.Lanczos3Resampler()
+                                    ,Sampler = new ImageSharp.Processing.Lanczos3Resampler()
                                     
                                     // No recognizable advantage  
                                     // ,Sampler = new ImageSharp.Processing.MitchellNetravaliResampler()
-                                     ,Sampler = new ImageSharp.Processing.SplineResampler()
+                                    // ,Sampler = new ImageSharp.Processing.SplineResampler()
                                     // ,Sampler = new ImageSharp.Processing.RobidouxResampler()
                                     // ,Sampler = new ImageSharp.Processing.TriangleResampler()
 
