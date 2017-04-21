@@ -22,6 +22,34 @@ namespace ResizeTestWebApplication.Controllers
 
         public IActionResult Index()
         {
+
+            bool isLinux = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
+                System.Runtime.InteropServices.OSPlatform.Linux);
+
+            bool isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
+                System.Runtime.InteropServices.OSPlatform.Windows);
+
+            string cpuInfo = "";
+            if (isWindows)
+            {
+                var lm = Microsoft.Win32.Registry.LocalMachine;
+                var key = lm.OpenSubKey("HARDWARE").OpenSubKey("DESCRIPTION").OpenSubKey("System").OpenSubKey("CentralProcessor");
+                string[] keys = key.GetSubKeyNames();
+
+                var proc1 = key.OpenSubKey(keys[0]);
+                cpuInfo += proc1.GetValue("ProcessorNameString");
+                cpuInfo += System.Environment.NewLine;
+                cpuInfo += proc1.GetValue("Identifier");
+            }
+            else if (isLinux)
+            {
+                System.IO.File.ReadAllText("/proc/cpuinfo", System.Text.Encoding.UTF8);
+            }
+            else
+                cpuInfo = "CpuInfo not supported.";
+
+            ViewData["CpuInfo"] = cpuInfo;
+            
             return View();
         }
 

@@ -5,10 +5,39 @@
 <h1>Test</h1>
 
 
-<span id="bitness">@(System.IntPtr.Size * 8)</span><label for="bitness">-Bit</label>
-<br />
-<label for="bitness">Hardware-Accelerated:</label><span id="hw">@System.Numerics.Vector.IsHardwareAccelerated</span>
-<br />
+<table>
+    <tr>
+        <td>CPU-Architecture:</td>
+        <td>@System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE")
+        @System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432")
+        </td>
+    </tr>
+    <tr>
+        <td>App-Architecture:</td>
+        <td>@(System.IntPtr.Size * 8)-Bit</td>
+    </tr>
+    <tr>
+        <td>HW-Acc.:</td>
+        <td>@System.Numerics.Vector.IsHardwareAccelerated</td>
+    </tr>
+    <tr>
+        <td>CPUinfo<br /><br /></td>
+        <td><pre style="float:left;" id="cpu">@ViewData["CpuInfo"]
+Cores: @System.Environment.ProcessorCount</pre></td>
+    </tr>
+</table>
+
+
+<!--
+CPU-Architecture:	AMD64
+App-Architecture:	64-Bit
+HW-Acc.:	True
+CPUinfo
+
+Intel(R) Core(TM) i5-2540M CPU @ 2.60GHz
+Intel64 Family 6 Model 42 Stepping 7
+Cores: 4    
+-->
 
 <img style="width: 500px;" src="@Url.Content("~/images/orig.jpg")" alt="pic" />
 
