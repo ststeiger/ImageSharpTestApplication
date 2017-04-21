@@ -43,7 +43,7 @@ namespace ResizeTestWebApplication.Controllers
             }
             else if (isLinux)
             {
-                System.IO.File.ReadAllText("/proc/cpuinfo", System.Text.Encoding.UTF8);
+                cpuInfo = System.IO.File.ReadAllText("/proc/cpuinfo", System.Text.Encoding.UTF8);
             }
             else
                 cpuInfo = "CpuInfo not supported.";
